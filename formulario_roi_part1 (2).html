@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de ROI</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Formulário de Levantamento de Necessidades e Processos Financeiros, crédito e mercantis</h1>
+        
+        <form id="roiForm">
+            <!-- Campos Iniciais -->
+            <h2>Informações da Empresa</h2>
+            <label>Razão Social:</label><input type="text" name="razao_social" required><br><br>
+            <label>CNPJ:</label><input type="text" name="cnpj" required><br><br>
+            <label>Responsável Financeiro:</label><input type="text" name="responsavel_financeiro" required><br><br>
+            <label>Fone:</label><input type="tel" name="fone_financeiro" required><br><br>
+            <label>E-mail:</label><input type="email" name="email_financeiro" required><br><br>
+            <label>Responsável Compras:</label><input type="text" name="responsavel_compras"><br><br>
+            <label>Fone:</label><input type="tel" name="fone_compras"><br><br>
+            <label>E-mail:</label><input type="email" name="email_compras"><br><br>
+            <label>Responsável Suprimentos:</label><input type="text" name="responsavel_suprimentos"><br><br>
+            <label>Fone:</label><input type="tel" name="fone_suprimentos"><br><br>
+            <label>E-mail:</label><input type="email" name="email_suprimentos"><br><br>
+
+            <!-- Contas a Pagar Section -->
+            <h2>Contas a Pagar</h2>
+            <label>Qtd de Fornecedores:</label><input type="number" name="fornecedores"><br><br>
+            <label>Qtd de Pgtos a Fornecedores/Mês:</label><input type="number" name="pagamentos_fornecedores"><br><br>
+            <label>Qtd de Bancos:</label><input type="number" name="bancos"><br><br>
+            <label>Qtd de DOCs e TEDs:</label><input type="number" name="docs_teds"><br><br>
+            <label>Tarifa Média DOC e TEDs (R$):</label><input type="number" step="0.01" name="tarifa_docs_teds"><br><br>
+            <label>Estimativa de migração p/ Crédito em C/C (%):</label><input type="number" step="0.01" name="migracao_credito"><br><br>
+            <label>Tempo do Funcionário p/Pagamentos (min):</label><input type="number" name="tempo_programacao_pagamento"><br><br>
+            <label>Tempo do Funcionário p/ Envio dos Arquivos (min):</label><input type="number" name="tempo_envio_arquivos"><br><br>
+            <label>Tempo do Funcionário p/ Recepção dos Arquivos (min):</label><input type="number" name="tempo_recepcao_arquivos"><br><br>
+            <label>Qtd de Títulos não Recebidos (Mês):</label><input type="number" name="titulos_nao_recebidos"><br><br>
+            <label>Tempo dos Funcionários p/ Encontrar os Títulos (min):</label><input type="number" name="tempo_encontrar_titulos"><br><br>
+            <label>Qtd de Títulos Extraviados pagos por DOC, TED ou Depósito (Mês):</label><input type="number" name="titulos_extraviados"><br><br>
+            <label>Qtd de Ligações p/ Fornecedores (mês):</label><input type="number" name="ligacoes_fornecedores"><br><br>
+            <label>Qtd de Ligações de Fornecedores (mês):</label><input type="number" name="ligacoes_recebidas"><br><br>
+            <label>Custo Médio das Ligações Feitas/Recebidas (R$):</label><input type="number" step="0.01" name="custo_ligacoes"><br><br>
+            <label>Tempo das Ligações Feitas/Recebidas (min):</label><input type="number" name="tempo_ligacoes"><br><br>
+            <label>Salário desse Funcionário (R$):</label><input type="number" step="0.01" name="salario_funcionario_cp"><br><br>
+            
+            <!-- Folha Section -->
+            <h2>Folha</h2>
+            <label>Qtd de Funcionários:</label><input type="number" name="qtd_funcionarios"><br><br>
+            <label>Folhas/Mês (Ex.: Mensal=1; Quinzenal=2):</label><input type="number" name="folhas_mes"><br><br>
+            <label>Tempo p/ Envio dos Arquivos de Folha (min):</label><input type="number" name="tempo_envio_folha"><br><br>
+            <label>Tempo p/ Recepção dos Arquivos de Folha (min):</label><input type="number" name="tempo_recepcao_folha"><br><br>
+            <label>Salário desse Funcionário (R$):</label><input type="number" step="0.01" name="salario_funcionario_folha"><br><br>
+
+            <!-- Segurança Section -->
+            <h2>Segurança</h2>
+            <label>Valor Médio de Cobranças/Pagamentos (R$):</label><input type="number" step="0.01" name="valor_medio_cobrancas"><br><br>
+            <label>Prejuízo com Arquivos Interceptados (% ano):</label><input type="number" step="0.01" name="prejuizo_arquivos_interceptados"><br><br>
+            <label>Prejuízo com Boletos a Pagar Adulterados (% ano):</label><input type="number" step="0.01" name="prejuizo_boletos_adulterados"><br><br>
+            <label>Prejuízo com Erros nas Conciliações (R$):</label><input type="number" step="0.01" name="prejuizo_erros_conciliacoes"><br><br>
+            
+            <!-- Desenvolvimento Section -->
+            <h2>Desenvolvimento internos</h2>
+            <label>Qtd de Layouts (ano):</label><input type="number" name="qtd_layouts"><br><br>
+            <label>Hora Técnica (R$):</label><input type="number" step="0.01" name="hora_tecnica"><br><br>
+            <label>Horas por Layout:</label><input type="number" name="horas_por_layout"><br><br>
+
+            <input type="submit" value="Gerar">
+        </form>
+
+        <p id="successMessage" style="display:none; color: green;">Gerado com sucesso</p>
+    </div>
+
+    <script>
+        document.getElementById('roiForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+            
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            doc.text("Formulário de Levantamento de Necessidades e Processos Financeiros, crédito e mercantis", 10, 10);
+
+            // Coletar todos os campos do formulário e adicionar ao PDF
+            const formData = new FormData(event.target);
+            let yOffset = 20;
+
+            formData.forEach((value, key) => {
+                // Substituir sublinhados por espaços e capitalizar cada palavra
+                const formattedKey = key.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
+                doc.text(`${formattedKey}: ${value}`, 10, yOffset);
+                yOffset += 10;
+
+                // Adicionar quebra de página quando a altura ultrapassar um limite
+                if (yOffset > 270) {
+                    doc.addPage();
+                    yOffset = 20;
+                }
+            });
+
+            // Baixar o PDF
+            doc.save("formulario_roi.pdf");
+
+            // Mostrar mensagem de sucesso
+            document.getElementById('successMessage').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
